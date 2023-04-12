@@ -46,8 +46,9 @@ cargo run
 
 ## Performance?
 
-My personal benchmark using [Hoppscotch](https://hoppscotch.io), measured in milliseconds (ms)
-on a base M1 MBP. YMMV, especially Rust can be as slow as 150ms at the start when `GET`ting one item.
+My personal benchmark using [Hoppscotch](https://hoppscotch.io), table filled with 15000 rows,
+measured in milliseconds (ms) on a base M1 MBP. YMMV, especially Rust can be as slow as 150ms
+at the start when `GET`ting one item.
 
 | Actions           | Laravel    | Actix/Diesel |
 | ----------------- | ---------- | ------------ |
