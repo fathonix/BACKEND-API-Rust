@@ -42,8 +42,9 @@ pub async fn get_item(
 }
 
 pub async fn get_items(db: web::Data<Pool>) -> impl Responder {
-    let result =
-        dsl::products.load::<Product>(&mut db.get().unwrap());
+    let result = dsl::products
+        .order(products::id.desc())
+        .load::<Product>(&mut db.get().unwrap());
 
     match result {
         Ok(items) => {
