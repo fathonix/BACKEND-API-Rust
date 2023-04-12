@@ -59,3 +59,7 @@ on a base M1 MBP. YMMV, especially Rust can be as slow as 150ms at the start.
 
 * Fix updating items
 * Code cleanup
+
+## License
+
+This project is licensed under MIT. © 2023 Aldo Adirajasa Fathoni
