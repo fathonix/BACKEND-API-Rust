@@ -19,11 +19,13 @@ git clone https://github.com/fathonix/BACKEND-API-Rust.git
 cd BACKEND-API-Rust
 ```
 
-Add `.env` file to the root of this repo and set `DATABASE_URL` accordingly.
+Add `.env` file to the root of this repo and set `DATABASE_URL` and `HOST` accordingly.
 If you got MariaDB from XAMPP or Laragon, most likely the account is `root`
 and the password is blank. The database name is up to you.
+For more information, consult to the `.env.example` file.
 ```bash
 DATABASE_URL=mysql://root@127.0.0.1/backend_db
+HOST=127.0.0.1:8000
 ```
 
 Install `diesel_cli` with MySQL support enabled. Make sure that you have
