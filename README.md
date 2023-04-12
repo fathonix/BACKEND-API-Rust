@@ -4,7 +4,8 @@ This is a reimplementation of [Laravel-based REST API taught by my teacher](http
 in Rust, leveraging the power of [Actix](https://actix.rs) as the web framework and
 [Diesel](https://diesel.rs) as the ORM.
 
-This project is my Rust-learning media, so don't expect fully working, ready-to-use code.
+This project is my Rust-learning media, so don't expect fully working, ready-to-use code and
+I might switch to other frameworks without prior notice.
 
 ## How to use
 
@@ -44,7 +45,7 @@ cargo run
 ## Performance?
 
 My personal benchmark using [Hoppscotch](https://hoppscotch.io), measured in milliseconds (ms)
-on a base M1 MBP. YMMV, especially Rust can be as slow as 150ms at the start.
+on a base M1 MBP. YMMV, especially Rust can be as slow as 150ms at the start when `GET`ting one item.
 
 | Actions           | Laravel    | Actix/Diesel |
 | ----------------- | ---------- | ------------ |
@@ -53,11 +54,12 @@ on a base M1 MBP. YMMV, especially Rust can be as slow as 150ms at the start.
 | Creating one item | ~150       | ~15          |
 | Updating one item | ~130       | ~10^         |
 
-^For some reason updating to database does not work yet, this is taken from the server response.
+^For some reason updating to the database does not work yet, this is taken from the server response.
 
 ## Todos
 
 * Fix updating items
+* Implement token-based authentication (JWT)
 * Code cleanup
 
 ## License
