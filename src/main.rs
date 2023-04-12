@@ -20,7 +20,8 @@ async fn main() -> std::io::Result<()> {
     std::env::set_var("RUST_LOG", "debug");
 
     let config = config::load_config();
-    let manager = ConnectionManager::<MysqlConnection>::new(config.database.url);
+    let manager =
+        ConnectionManager::<MysqlConnection>::new(config.database_url);
     let pool: Pool = Pool::builder()
         .build(manager)
         .expect("Failed to create pool.");
@@ -34,7 +35,7 @@ async fn main() -> std::io::Result<()> {
             .route("/api/products/{id}", web::post().to(update_item))
             .route("/api/products/{id}", web::delete().to(delete_item))
     })
-        .bind(("127.0.0.1", 8000))
+        .bind(config.host)
         .expect("Failed to bind address.")
         .run()
         .await
