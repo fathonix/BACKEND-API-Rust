@@ -111,19 +111,19 @@ pub async fn update_item(
     item_id: web::Path<u64>,
     input_item: web::Json<InputProduct>,
 ) -> impl Responder {
-    let query = update(dsl::products.filter(products::id.eq(item_id.into_inner())))
-        .set(
-            (
-                products::name.eq(input_item.name.clone()),
-                products::price.eq(input_item.price),
-                products::updated_at.eq(chrono::Local::now().naive_local())
-            )
-        )
+    let id = item_id.into_inner();
+    let query = update(dsl::products)
+        .filter(products::id.eq(id))
+        .set((
+            products::name.eq(input_item.name.clone()),
+            products::price.eq(input_item.price),
+            products::updated_at.eq(chrono::Local::now().naive_local())
+        ))
         .execute(&mut db.get().unwrap());
 
     let result = match query {
         Ok(_) => dsl::products
-            .find(last_insert_id())
+            .find(id)
             .get_result::<Product>(&mut db.get().unwrap()),
         Err(e) => Err(e)
     };

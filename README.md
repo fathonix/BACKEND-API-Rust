@@ -52,9 +52,9 @@ on a base M1 MBP. YMMV, especially Rust can be as slow as 150ms at the start whe
 | `GET` all items   | ~1300-1600 | ~315-360     |
 | `GET` one item    | ~20-30     | ~5-7         |
 | Creating one item | ~150       | ~15          |
-| Updating one item | ~130       | ~10^         |
+| Updating one item | ~130       | ~10          |
 
-^For some reason updating to the database does not work yet, this is taken from the server response.
+~~^For some reason updating to the database does not work yet, this is taken from the server response.~~ Apparently it worked but the getting part didn't. Fixed
 
 ## Todos
 
