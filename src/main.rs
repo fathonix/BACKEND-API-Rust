@@ -29,11 +29,17 @@ async fn main() -> std::io::Result<()> {
     HttpServer::new(move || {
         App::new()
             .app_data(Data::new(pool.clone()))
-            .route("/api/products", web::get().to(get_items))
-            .route("/api/products", web::post().to(create_item))
-            .route("/api/products/{id}", web::get().to(get_item))
-            .route("/api/products/{id}", web::post().to(update_item))
-            .route("/api/products/{id}", web::delete().to(delete_item))
+            .service(
+                web::resource("/api/products")
+                    .route(web::get().to(get_items))
+                    .route(web::post().to(create_item))
+            )
+            .service(
+                web::resource("/api/products/{id}")
+                    .route(web::get().to(get_item))
+                    .route(web::put().to(update_item))
+                    .route(web::delete().to(delete_item))
+            )
     })
         .bind(config.host)
         .expect("Failed to bind address.")
